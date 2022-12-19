@@ -1,5 +1,10 @@
-const ALL_MEETUP_PAGE = 1;
-const FAVORITES_PAGE = 2;
-const NEW_MEETUP_PAGE = 3;
+import AllMeetupsPage from "../pages/AllMeetupsPage";
+import FavoritesPage from "../pages/Favorites";
+import NewMeetupsPage from "../pages/NewMeetup";
 
-export { ALL_MEETUP_PAGE, FAVORITES_PAGE, NEW_MEETUP_PAGE };
+export const pagesMapper = {
+  ALL_MEETUP_PAGE: <AllMeetupsPage />,
+  FAVORITES_PAGE: <FavoritesPage />,
+  NEW_MEETUP_PAGE: <NewMeetupsPage />,
+  DEFAULT: <AllMeetupsPage />,
+};
