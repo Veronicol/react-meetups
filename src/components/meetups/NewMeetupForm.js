@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addNewMeetup } from "../../redux/actions/meetup_list";
 import Card from "../ui/Card";
 import classes from "./NewMeetupForm.module.css";
 
@@ -9,20 +11,23 @@ export default function NewMeetupForm() {
     ADDRESS: "address",
     DESCRIPTION: "description",
   };
-
   const { TITLE, IMAGEURL, ADDRESS, DESCRIPTION } = fieldsMap;
 
-  const [formData, setFormData] = useState({
+  const formDefaultValue = {
     title: "",
     image: "",
     address: "",
     description: "",
-  });
+  };
+
+  const [formData, setFormData] = useState(formDefaultValue);
+  const dispatch = useDispatch();
 
   function submitHandler(event) {
     event.preventDefault();
     if (formData.title && formData.image && formData.address && formData.description) {
-      // TODO: ADD TO GLOBAL STATE OF APP
+      dispatch(addNewMeetup(formData));
+      setFormData(formDefaultValue);
     }
   }
 
