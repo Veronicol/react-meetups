@@ -1,9 +1,9 @@
 /* eslint-disable testing-library/await-async-query */
 /* eslint-disable testing-library/no-debugging-utils */
-import { shallow, mount } from "enzyme";
+import { shallow } from "enzyme";
+import { Route, Routes } from "react-router-dom";
 import App from "./App";
 import MainNavigation from "./components/layout/MainNavigation";
-import Layout from "./components/layout/Layout";
 
 /**
  * Factory funcion to create a ShallowWrapper for the App component
@@ -15,7 +15,7 @@ const findByTestAttr = (wrapper, val) => wrapper.find(`[data-test]='${val}'`);
 
 test("renders App without crashing", () => {
   const wrapper = setup();
-  //console.log(wrapper.debug());
+  // console.log(wrapper.debug());
   expect(wrapper.exists()).toBe(true);
 });
 
@@ -24,7 +24,8 @@ test("renders the navigation component", () => {
   expect(wrapper.find(MainNavigation).length).toBe(1);
 });
 
-test("renders the Layout component", () => {
+test("renders the Routes component and 4 different Route components", () => {
   const wrapper = setup();
-  expect(wrapper.find(Layout).length).toBe(1);
+  expect(wrapper.find(Routes).length).toBe(1);
+  expect(wrapper.find(Route).length).toBe(4);
 });
