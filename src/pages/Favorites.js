@@ -1,22 +1,14 @@
 import { useSelector } from "react-redux";
-import MeetupItem from "../components/meetups/MeetupItem";
-import classes from "../components/meetups/MeetupList.module.css";
+import MeetupList from "../components/meetups/MeetupList";
 
 export default function FavoritesPage() {
   const { meetupList, favoriteList } = useSelector((state) => state);
+  const favoriteMeetupList = meetupList.filter((currentMeetup) => favoriteList.includes(currentMeetup.id));
 
   return (
     <section>
       <h1>Favorites Page</h1>
-      {favoriteList && !!favoriteList.length && (
-        <ul className={classes.list}>
-          {meetupList
-            .filter((currentMeetup) => favoriteList.includes(currentMeetup.id))
-            .map((currentItem) => (
-              <MeetupItem key={currentItem.id} item={currentItem} />
-            ))}
-        </ul>
-      )}
+      {favoriteList && !!favoriteList.length && <MeetupList list={favoriteMeetupList} />}
     </section>
   );
 }
