@@ -5,9 +5,10 @@ const initialState = favoriteList;
 
 export const favoriteListReducer = (state = initialState, { type, payload }) => {
   if (type === ADD_FAVORITE) {
-    state.push(payload);
-  } else if (type === REMOVE_FAVORITE) {
-    state.filter((currentMeetupId) => currentMeetupId !== payload);
+    return [...state, payload];
+  }
+  if (type === REMOVE_FAVORITE) {
+    return state.filter((currentMeetupId) => currentMeetupId !== payload);
   }
   return state;
 };
