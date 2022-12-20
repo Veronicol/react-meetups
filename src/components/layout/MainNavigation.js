@@ -5,6 +5,7 @@ import classes from "./MainNavigation.module.css";
 
 export default function MainNavigation() {
   const { favoriteList } = useSelector((state) => state);
+  
   return (
     <header className={classes.header} data-test="navigation-header">
       <div className={classes.logo}>React Meetups</div>

@@ -6,10 +6,6 @@ export class Meetup {
     this.image = image;
     this.address = address;
     this.description = description;
-    if (id) {
-      this.id = id;
-    } else {
-      this.id = uuidv4();
-    }
+    this.id = id ?? uuidv4();
   }
 }

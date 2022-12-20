@@ -16,7 +16,7 @@ export default function AllMeetupsPage() {
   return (
     <section>
       <h1>All Meetups</h1>
-      {meetupList && !!meetupList.length && <MeetupList list={meetupList} />}
+      {!!meetupList?.length && <MeetupList list={meetupList} />}
     </section>
   );
 }

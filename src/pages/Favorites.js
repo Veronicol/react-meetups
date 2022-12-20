@@ -8,7 +8,7 @@ export default function FavoritesPage() {
   return (
     <section>
       <h1>Favorites Page</h1>
-      {favoriteList && !!favoriteList.length && <MeetupList list={favoriteMeetupList} />}
+      {!!favoriteList?.length && <MeetupList list={favoriteMeetupList} />}
     </section>
   );
 }

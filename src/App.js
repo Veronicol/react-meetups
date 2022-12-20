@@ -21,7 +21,7 @@ function App() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [currentScroll.current]);
+  }, []);
 
   function getCurrentPageComponent(page) {
     const currentPageComponent = page || pagesMapper.DEFAULT;
