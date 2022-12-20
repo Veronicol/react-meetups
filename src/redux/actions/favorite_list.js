@@ -5,7 +5,7 @@ export const addMeetupToFavoriteList = (meetupId) => ({
   payload: meetupId,
 });
 
-export const removeMeetupToFavoriteList = (meetupId) => ({
+export const removeMeetupFromFavoriteList = (meetupId) => ({
   type: REMOVE_FAVORITE,
   payload: meetupId,
 });
