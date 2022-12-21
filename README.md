@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+# React-Meetup
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Arrancar el proyecto
 
-## Available Scripts
+### Prerrequisitos
 
-In the project directory, you can run:
+Tener instalado `Node.js`.
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Para abrir la aplicación en modo de desarrollo:
+Abre [http://localhost:3000](http://localhost:3000) para ver la aplicación en el navegador.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Lanza los tests de la aplicación y se queda realizando una escucha activa que los relanza si hay cambios.
 
-### `npm run build`
+## Decisiones de proyecto
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+He utilizado componentes funcionales y hooks para manejo de los ciclos de vida, tratando de generar los mínimos renderizados indispensables para la actualización de la información.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+He instalado las siguientes librerías externas:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- `react-router` para la implementación de rutas de navegación
+- `redux` para el manejo de estado global
+- `uuid` para la creación de ids únicos en las altas de meetups
 
-### `npm run eject`
+### Organización
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Aunque es un proyecto muy pequeño, he organizado los archivos y carpetas para que éste sea fácilmente escalable. He separado las capas del proyecto siguiendo el principio de responsabilidad única, y por ello he creado un servicio para las llamadas (que en un futuro podrían ser a una API) y un modelo para el mapeo de datos necesario para el renderizado en los componentes.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Testing
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+He modificado los tests existentes en el código recibido para que fueran correctos tras los cambios implementados, y he completado la suite de tests del componente `MeetupItem`.
+Como librería de testing unitario, he continuado utilizando `enzyme`, ya que era la implementada en el código recibido.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Redux
 
-## Learn More
+He implantado Redux para la gestión del estado global de la aplicación, en cuya store se centralizan los datos de listado de meetups (existentes definidos en el proyecto y nuevos creados mediante el formulario de alta), y favoritos.
+La decisión de optar por una librería externa, como es Redux, en lugar de utilizar directamente los Context de React ha venido derivada por la escaliabilidad que aporta la solución elegida. En caso de tener que implementar algún estado transversal a toda la aplicación, como Idioma o Tema global (modo claro-oscuro, por ejemplo), habría optado por Context.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Próximas iteraciones
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+En caso de seguir desarrollando este proyecto, los pasos más inmediatos serían:
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Implementación de una API para la persistencia de datos
+- Gestión de errores en las llamadas que actualizan el estado global
+- Loading durante la carga de datos
+- Utilizar testing-library como librería de tests unitarios en lugar de enzyme.
+- Completar el testing de la aplicación
